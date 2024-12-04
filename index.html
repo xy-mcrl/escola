@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Turmas - Professor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+   <!-- Tela de Login -->
+<div class="login-container" id="login-screen">
+    <div class="login-box">
+        <img src="image/logo.png" alt="Imagem de Login" class="login-image">
+        <h2>Login do Professor</h2>
+        <form onsubmit="return handleLogin(event)">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</div>
+
+
+
+    <!-- Tela Principal do Professor -->
+    <div id="main-screen" style="display: none;">
+        <header>
+            <h1>Painel do Professor</h1>
+            <p id="professor-nome" style="color: white; margin: 0;"></p> <!-- Elemento para mostrar o nome -->
+        </header>        
+
+        <nav>
+            <a href="#" onclick="openTab(event, 'listar-turmas')">Listar Turmas</a>
+            <a href="#" onclick="openTab(event, 'cadastro-turma')">Cadastrar Turma</a>
+            <a href="#" onclick="openTab(event, 'listar-atividades')">Listar Atividades</a>
+            <a href="#" onclick="openTab(event, 'cadastro-atividade')">Cadastrar Atividade</a>
+            <a href="#" onclick="logout()">Sair</a>
+        </nav>
+
+        <div class="container">
+            <div class="tab">
+                <!-- Abas são criadas aqui -->
+            </div>
+
+            <!-- Listar Turmas -->
+            <div id="listar-turmas" class="tab-content">
+                <h1>Suas Turmas</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome da Turma</th>
+                            <th>Ano</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="turmas-lista">
+                        <!-- Turmas serão listadas aqui -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cadastro de Turma -->
+            <div id="cadastro-turma" class="tab-content">
+                <h1>Cadastrar Nova Turma</h1>
+                <form onsubmit="return cadastrarTurma(event)">
+                    <div class="form-group">
+                        <label for="nome-turma">Nome da Turma</label>
+                        <input type="text" id="nome-turma" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ano-turma">Ano</label>
+                        <input type="number" id="ano-turma" required>
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+
+            <!-- Listar Atividades -->
+            <div id="listar-atividades" class="tab-content">
+                <h1>Atividades das Turmas</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Turma</th>
+                            <th>Atividade</th>
+                            <th>Data Inicio</th>
+                            <th>Data Final</th>
+                        </tr>
+                    </thead>
+                    <tbody id="atividades-lista">
+                        <!-- Atividades serão listadas aqui -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cadastro de Atividade -->
+            <div id="cadastro-atividade" class="tab-content">
+                <h1>Cadastrar Nova Atividade</h1>
+                <form onsubmit="return cadastrarAtividade(event)">
+                    <div class="form-group">
+                        <label for="turma-atividade">Turma</label>
+                        <input type="text" id="turma-atividade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome-atividade">Nome da Atividade</label>
+                        <input type="text" id="nome-atividade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-inicio">Data Início</label>
+                        <input type="date" id="data-inicio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-final">Data Final</label>
+                        <input type="date" id="data-final" required>
+                    </div>
+                    
+                    
+                    
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
